@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>gameofnow — 360 Arena</title>
+  <link rel="stylesheet" href="styles/main.css" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><i data-lucide="crosshair" class="ic"></i> gameofnow</div>
+    <div class="wallet"><i data-lucide="coins" class="ic"></i> <span id="credits">0</span> cr
+      <button id="earn" title="Daily bonus"><i data-lucide="gift" class="ic"></i> +100</button>
+    </div>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab active" data-tab="range"><i data-lucide="gamepad-2" class="ic"></i> Arena</button>
+    <button class="tab" data-tab="shop"><i data-lucide="shopping-cart" class="ic"></i> Shop</button>
+    <button class="tab" data-tab="crates"><i data-lucide="package" class="ic"></i> Crates</button>
+    <button class="tab" data-tab="vault"><i data-lucide="key-round" class="ic"></i> Vault</button>
+  </nav>
+
+  <main>
+    <section id="panel-range" class="panel active">
+      <div class="range-head">
+        <div class="stats"><span><i data-lucide="zap" class="ic"></i> <b id="stat-shots">0</b></span> • <span><i data-lucide="sparkles" class="ic"></i> <b id="stat-hits">0</b></span> • <span><i data-lucide="target" class="ic"></i> <b id="stat-acc">0%</b></span> • <span><i data-lucide="trophy" class="ic"></i> <b id="stat-best">0</b></span></div>
+        <button id="restart"><i data-lucide="rotate-ccw" class="ic"></i> Restart round</button>
+      </div>
+      <div class="canvas-wrap"><canvas id="range"></canvas></div>
+      <p class="hint"><i data-lucide="user" class="ic"></i> You spawn at the ◎ spot. <i data-lucide="move" class="ic"></i> <b>WASD / arrows</b> to move &amp; reach targets • 360° mouse aim • <i data-lucide="flame" class="ic"></i> <b>HOLD left-click / touch / space</b> to keep firing. <i data-lucide="magnet" class="ic"></i> Close-range kills pay 1.5x. See RULES.md.</p>
+    </section>
+
+    <section id="panel-shop" class="panel">
+      <h2><i data-lucide="shopping-cart" class="ic"></i> Shop — <i data-lucide="crosshair" class="ic"></i> guns, <i data-lucide="palette" class="ic"></i> gun skins, <i data-lucide="telescope" class="ic"></i> scopes</h2>
+      <p class="hint">Guns list their compatible scopes. Rarity: <i data-lucide="circle" class="ic"></i> common • <i data-lucide="medal" class="ic"></i> rare • <i data-lucide="gem" class="ic"></i> epic • <i data-lucide="crown" class="ic"></i> legendary.</p>
+      <div id="shop-grid" class="grid"></div>
+    </section>
+
+    <section id="panel-crates" class="panel">
+      <h2><i data-lucide="package" class="ic"></i> Loot crates</h2>
+      <p class="hint"><i data-lucide="package" class="ic"></i> Recruit 200 • <i data-lucide="boxes" class="ic"></i> Tactical 600 • <i data-lucide="crown" class="ic"></i> Elite 1400. Buying stores the crate unopened in <b>your stash</b> below — each crate contains <i data-lucide="coins" class="ic"></i> coins / <i data-lucide="telescope" class="ic"></i> scopes / <i data-lucide="palette" class="ic"></i> skins / <i data-lucide="crosshair" class="ic"></i> guns. Open when ready.</p>
+      <div id="crate-grid" class="grid"></div>
+      <h3><i data-lucide="backpack" class="ic"></i> Your crate stash (<span id="stash-count">0</span>)</h3>
+      <div id="stash-grid" class="grid"></div>
+    </section>
+
+    <section id="panel-vault" class="panel">
+      <h2><i data-lucide="key-round" class="ic"></i> Vault — your loadout</h2>
+      <p class="hint"><i data-lucide="user" class="ic"></i> Dress the player: <i data-lucide="crosshair" class="ic"></i> gun + <i data-lucide="palette" class="ic"></i> skin + <i data-lucide="telescope" class="ic"></i> scope. Saved until you change it again.</p>
+      <div class="vault">
+        <div class="vault-preview">
+          <div id="vault-preview-gun" class="gunprev"></div>
+          <div id="vault-preview-skin" class="skinprev"></div>
+          <div id="vault-preview-scope" class="scopeprev"></div>
+        </div>
+        <div class="vault-fields">
+          <p><i data-lucide="crosshair" class="ic"></i> <b id="v-gun">-</b> • <i data-lucide="palette" class="ic"></i> <b id="v-skin">-</b> • <i data-lucide="telescope" class="ic"></i> <b id="v-scope">-</b></p>
+          <label><i data-lucide="crosshair" class="ic"></i> Gun <select id="sel-gun"></select></label>
+          <label><i data-lucide="palette" class="ic"></i> Skin <select id="sel-skin"></select></label>
+          <label><i data-lucide="telescope" class="ic"></i> Scope <select id="sel-scope"></select></label>
+          <div id="inv" class="inv"></div>
+          <button id="reset-save" class="danger">Reset save</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast"></div>
+
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>
