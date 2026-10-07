@@ -100,4 +100,4 @@ MIT
 
 ---
 
-**K.bhalavardt, MIT Student**
+**K.bhalavardan, MITS Student**
