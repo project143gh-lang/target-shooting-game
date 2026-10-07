@@ -4,7 +4,7 @@ A browser-based target shooting game with an economy loop. Hit targets → earn 
 
 ## 📸 Screenshot
 
-![Target Shooting Game Repository](./target-shooting-game.png)
+
 
 **View the live game:** Open `index.html` in any modern browser (or run `npx serve .`)
 
